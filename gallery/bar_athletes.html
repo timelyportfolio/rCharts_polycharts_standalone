@@ -1,0 +1,171 @@
+<!doctype HTML>
+<html>
+  <head>
+    <link rel='stylesheet' href="http://netdna.bootstrapcdn.com/bootswatch/2.3.1/cosmo/bootstrap.min.css">
+     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" >
+    <link rel='stylesheet' href="http://twitter.github.io/bootstrap/assets/js/google-code-prettify/prettify.css">
+    
+    <script src='http://polychart.com/s/third_party/polychart2.standalone.js' type='text/javascript'></script>
+    
+    <style>
+    .rChart {
+      display: block
+      margin: auto auto;
+      width: 800px;
+      height: 400px;
+    }
+    body {
+      margin-top: 60px;
+    }
+    </style>
+    
+  </head>
+  <body>
+    <div class='container'>
+      <div class='row'>
+        <div class='span3'>
+          <div class='well'>
+            <ul class='nav nav-list'>
+              <li class=''>
+                <a href='area_osshare.html'>
+                  area_osshare
+                </a>
+              </li>
+              <li class='active'>
+                <a href='bar_athletes.html'>
+                  bar_athletes
+                </a>
+              </li>
+              <li class=''>
+                <a href='bar_LOTR.html'>
+                  bar_LOTR
+                </a>
+              </li>
+              <li class=''>
+                <a href='boxplot.html'>
+                  boxplot
+                </a>
+              </li>
+              <li class=''>
+                <a href='groupedbar_salaries.html'>
+                  groupedbar_salaries
+                </a>
+              </li>
+              <li class=''>
+                <a href='histogram_heights.html'>
+                  histogram_heights
+                </a>
+              </li>
+              <li class=''>
+                <a href='line_browsershare.html'>
+                  line_browsershare
+                </a>
+              </li>
+              <li class=''>
+                <a href='line_dowjones.html'>
+                  line_dowjones
+                </a>
+              </li>
+              <li class=''>
+                <a href='scatter_facet_iris.html'>
+                  scatter_facet_iris
+                </a>
+              </li>
+              <li class=''>
+                <a href='scatter_irisflower.html'>
+                  scatter_irisflower
+                </a>
+              </li>
+              <li class=''>
+                <a href='stackedbar_sales.html'>
+                  stackedbar_sales
+                </a>
+              </li>
+              <li class=''>
+                <a href='tile_iris.html'>
+                  tile_iris
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class='span9'>
+          <div id='chart2b405caa7ab8' class='rChart nvd3Plot polycharts'></div>
+<pre><code class='r'>jsondata = data.frame(rbind(c(&quot;Floyd Mayweather&quot;, 8.5e+07, &quot;Boxing&quot;), c(&quot;Manny Pacquaio&quot;, 6.2e+07, &quot;Boxing&quot;), 
+    c(&quot;Tiger Woods&quot;, 59400000, &quot;Golf&quot;), c(&quot;LeBron James&quot;, 5.3e+07, &quot;Basketball&quot;), c(&quot;Roger Federer&quot;, 52700000, 
+        &quot;Tennis&quot;), c(&quot;Kopaye Bryant&quot;, 52300000, &quot;Basketball&quot;), c(&quot;Phil Mickelson&quot;, 47800000, &quot;Golf&quot;), c(&quot;David Beckham&quot;, 
+        4.6e+07, &quot;Soccer&quot;), c(&quot;Cristiano Ronaldo&quot;, 42500000, &quot;Soccer&quot;), c(&quot;Peyton Manning&quot;, 42400000, &quot;Football&quot;)))
+colnames(jsondata) &lt;- c(&quot;name&quot;, &quot;pay&quot;, &quot;sport&quot;)
+p9 &lt;- rPlot(x = list(var = &quot;name&quot;, sort = &quot;pay&quot;), y = &quot;pay&quot;, data = jsondata, color = &quot;sport&quot;, type = &quot;bar&quot;)
+p9$guides(y = list(title = &quot;Athlete Pay (in $)&quot;), x = list(title = &quot;Name of Athlete&quot;, numticks = 10), color = list(title = &quot;Type of Sport&quot;))
+p9$coord(type = &quot;cartesian&quot;, flip = &quot;true&quot;)
+p9$set(title = &quot;Top 10 Highest Paid Athletes 2012&quot;)
+# p9$html() cat(p9$render())
+p9 
+</code></pre>
+        </div>
+      </div>
+    </div>
+      
+    <script type='text/javascript'>
+    var chartParams = {
+ "dom": "chart2b405caa7ab8",
+"width":    800,
+"height":    400,
+"layers": [
+ {
+ "x": {
+ "var": "name",
+"sort": "pay" 
+},
+"y": "pay",
+"data": {
+ "name": [ "Floyd Mayweather", "Manny Pacquaio", "Tiger Woods", "LeBron James", "Roger Federer", "Kopaye Bryant", "Phil Mickelson", "David Beckham", "Cristiano Ronaldo", "Peyton Manning" ],
+"pay": [ "8.5e+07", "6.2e+07", "59400000", "5.3e+07", "52700000", "52300000", "47800000", "4.6e+07", "42500000", "42400000" ],
+"sport": [ "Boxing", "Boxing", "Golf", "Basketball", "Tennis", "Basketball", "Golf", "Soccer", "Soccer", "Football" ] 
+},
+"facet": null,
+"color": "sport",
+"type": "bar" 
+} 
+],
+"facet": [],
+"guides": {
+ "y": {
+ "title": "Athlete Pay (in $)" 
+},
+"x": {
+ "title": "Name of Athlete",
+"numticks":     10 
+},
+"color": {
+ "title": "Type of Sport" 
+} 
+},
+"coord": {
+ "type": "cartesian",
+"flip": "true" 
+},
+"title": "Top 10 Highest Paid Athletes 2012",
+"id": "chart2b405caa7ab8" 
+}
+    _.each(chartParams.layers, function(el){
+        el.data = polyjs.data(el.data)
+    })
+    var graph_chart2b405caa7ab8 = polyjs.chart(chartParams);
+</script>
+    
+  </body>
+  <!-- Google Prettify -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js"></script>
+  <script 
+    src='https://google-code-prettify.googlecode.com/svn-history/r232/trunk/src/lang-r.js'>
+  </script>
+  <script>
+    var pres = document.getElementsByTagName("pre");
+    for (var i=0; i < pres.length; ++i) {
+      pres[i].className = "prettyprint linenums";
+    }
+    prettyPrint();
+  </script>
+</html>

@@ -1,0 +1,149 @@
+<!doctype HTML>
+<html>
+  <head>
+    <link rel='stylesheet' href="http://netdna.bootstrapcdn.com/bootswatch/2.3.1/cosmo/bootstrap.min.css">
+     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" >
+    <link rel='stylesheet' href="http://twitter.github.io/bootstrap/assets/js/google-code-prettify/prettify.css">
+    
+    <script src='http://polychart.com/s/third_party/polychart2.standalone.js' type='text/javascript'></script>
+    
+    <style>
+    .rChart {
+      display: block
+      margin: auto auto;
+      width: 800px;
+      height: 400px;
+    }
+    body {
+      margin-top: 60px;
+    }
+    </style>
+    
+  </head>
+  <body>
+    <div class='container'>
+      <div class='row'>
+        <div class='span3'>
+          <div class='well'>
+            <ul class='nav nav-list'>
+              <li class=''>
+                <a href='area_osshare.html'>
+                  area_osshare
+                </a>
+              </li>
+              <li class=''>
+                <a href='bar_athletes.html'>
+                  bar_athletes
+                </a>
+              </li>
+              <li class=''>
+                <a href='bar_LOTR.html'>
+                  bar_LOTR
+                </a>
+              </li>
+              <li class=''>
+                <a href='boxplot.html'>
+                  boxplot
+                </a>
+              </li>
+              <li class='active'>
+                <a href='groupedbar_salaries.html'>
+                  groupedbar_salaries
+                </a>
+              </li>
+              <li class=''>
+                <a href='histogram_heights.html'>
+                  histogram_heights
+                </a>
+              </li>
+              <li class=''>
+                <a href='line_browsershare.html'>
+                  line_browsershare
+                </a>
+              </li>
+              <li class=''>
+                <a href='line_dowjones.html'>
+                  line_dowjones
+                </a>
+              </li>
+              <li class=''>
+                <a href='scatter_facet_iris.html'>
+                  scatter_facet_iris
+                </a>
+              </li>
+              <li class=''>
+                <a href='scatter_irisflower.html'>
+                  scatter_irisflower
+                </a>
+              </li>
+              <li class=''>
+                <a href='stackedbar_sales.html'>
+                  stackedbar_sales
+                </a>
+              </li>
+              <li class=''>
+                <a href='tile_iris.html'>
+                  tile_iris
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class='span9'>
+          <div id='chart2b40237f4f32' class='rChart nvd3Plot polycharts'></div>
+<pre><code class='r'>data = list(names = c(&quot;Joe&quot;, &quot;Jay&quot;, &quot;Jessica&quot;, &quot;Mayfield&quot;, &quot;Candice&quot;, &quot;Alice&quot;), department = c(&quot;Sales&quot;, 
+    &quot;Sales&quot;, &quot;IT&quot;, &quot;IT&quot;, &quot;HR&quot;, &quot;HR&quot;), salary = c(1e+05, 98000, 110000, 50000, 55000, 80000))
+p11 &lt;- rPlot(salary ~ department, color = &quot;names&quot;, data = data, type = &quot;bar&quot;, position = &quot;dodge&quot;)
+p11$set(title = &quot;Department Salaries&quot;)
+p11 
+</code></pre>
+        </div>
+      </div>
+    </div>
+      
+    <script type='text/javascript'>
+    var chartParams = {
+ "dom": "chart2b40237f4f32",
+"width":    800,
+"height":    400,
+"layers": [
+ {
+ "x": "department",
+"y": "salary",
+"data": {
+ "names": [ "Joe", "Jay", "Jessica", "Mayfield", "Candice", "Alice" ],
+"department": [ "Sales", "Sales", "IT", "IT", "HR", "HR" ],
+"salary": [  1e+05,  98000, 1.1e+05,  50000,  55000,  80000 ] 
+},
+"facet": null,
+"color": "names",
+"type": "bar",
+"position": "dodge" 
+} 
+],
+"facet": [],
+"guides": [],
+"coord": [],
+"title": "Department Salaries",
+"id": "chart2b40237f4f32" 
+}
+    _.each(chartParams.layers, function(el){
+        el.data = polyjs.data(el.data)
+    })
+    var graph_chart2b40237f4f32 = polyjs.chart(chartParams);
+</script>
+    
+  </body>
+  <!-- Google Prettify -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js"></script>
+  <script 
+    src='https://google-code-prettify.googlecode.com/svn-history/r232/trunk/src/lang-r.js'>
+  </script>
+  <script>
+    var pres = document.getElementsByTagName("pre");
+    for (var i=0; i < pres.length; ++i) {
+      pres[i].className = "prettyprint linenums";
+    }
+    prettyPrint();
+  </script>
+</html>

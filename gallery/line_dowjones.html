@@ -1,0 +1,181 @@
+<!doctype HTML>
+<html>
+  <head>
+    <link rel='stylesheet' href="http://netdna.bootstrapcdn.com/bootswatch/2.3.1/cosmo/bootstrap.min.css">
+     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" >
+    <link rel='stylesheet' href="http://twitter.github.io/bootstrap/assets/js/google-code-prettify/prettify.css">
+    
+    <script src='http://polychart.com/s/third_party/polychart2.standalone.js' type='text/javascript'></script>
+    
+    <style>
+    .rChart {
+      display: block
+      margin: auto auto;
+      width: 800px;
+      height: 400px;
+    }
+    body {
+      margin-top: 60px;
+    }
+    </style>
+    
+  </head>
+  <body>
+    <div class='container'>
+      <div class='row'>
+        <div class='span3'>
+          <div class='well'>
+            <ul class='nav nav-list'>
+              <li class=''>
+                <a href='area_osshare.html'>
+                  area_osshare
+                </a>
+              </li>
+              <li class=''>
+                <a href='bar_athletes.html'>
+                  bar_athletes
+                </a>
+              </li>
+              <li class=''>
+                <a href='bar_LOTR.html'>
+                  bar_LOTR
+                </a>
+              </li>
+              <li class=''>
+                <a href='boxplot.html'>
+                  boxplot
+                </a>
+              </li>
+              <li class=''>
+                <a href='groupedbar_salaries.html'>
+                  groupedbar_salaries
+                </a>
+              </li>
+              <li class=''>
+                <a href='histogram_heights.html'>
+                  histogram_heights
+                </a>
+              </li>
+              <li class=''>
+                <a href='line_browsershare.html'>
+                  line_browsershare
+                </a>
+              </li>
+              <li class='active'>
+                <a href='line_dowjones.html'>
+                  line_dowjones
+                </a>
+              </li>
+              <li class=''>
+                <a href='scatter_facet_iris.html'>
+                  scatter_facet_iris
+                </a>
+              </li>
+              <li class=''>
+                <a href='scatter_irisflower.html'>
+                  scatter_irisflower
+                </a>
+              </li>
+              <li class=''>
+                <a href='stackedbar_sales.html'>
+                  stackedbar_sales
+                </a>
+              </li>
+              <li class=''>
+                <a href='tile_iris.html'>
+                  tile_iris
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class='span9'>
+          <div id='chart2b4016bb79c1' class='rChart nvd3Plot polycharts'></div>
+<pre><code class='r'>require(quantmod)
+require(reshape2)
+
+DJIA &lt;- na.omit(getSymbols(&quot;DJIA&quot;, src = &quot;FRED&quot;, auto.assign = FALSE)[&quot;2012-12-04::2013-03-10&quot;])
+
+xtsMelt &lt;- function(xtsData, metric, names = NULL) {
+    df &lt;- data.frame(index(xtsData), coredata(xtsData), stringsAsFactors = FALSE)
+    df.melt &lt;- melt(df, id.vars = 1)
+    df.melt &lt;- data.frame(df.melt, rep(metric, NROW(df.melt)))
+    # little unnecessary housekeeping
+    df.melt &lt;- df.melt[, c(1, 2, 4, 3)]
+    if (is.null(names)) {
+        colnames(df.melt) &lt;- c(&quot;date&quot;, &quot;indexname&quot;, &quot;metric&quot;, &quot;value&quot;)
+    } else {
+        colnames(df.melt) &lt;- names
+    }
+    df.melt[, 1] &lt;- as.Date(df.melt[, 1])
+    return(df.melt)
+}
+
+DJIA.melt &lt;- xtsMelt(DJIA, &quot;price&quot;, names = c(&quot;Date&quot;, &quot;Index&quot;, &quot;Metric&quot;, &quot;Close&quot;))
+DJIA.melt[, 1] &lt;- format(DJIA.melt[, 1], &quot;%m/%d/%Y&quot;)
+
+p1 &lt;- rPlot(Close ~ Date, data = DJIA.melt, type = &quot;line&quot;, size = list(const = 3))
+p1$guides(x = list(numticks = 10), y = list(min = 12000, max = 15000))
+p1$set(title = &quot;Dow Jones Daily Closing Value&quot;)
+p1 
+</code></pre>
+        </div>
+      </div>
+    </div>
+      
+    <script type='text/javascript'>
+    var chartParams = {
+ "dom": "chart2b4016bb79c1",
+"width":    800,
+"height":    400,
+"layers": [
+ {
+ "x": "Date",
+"y": "Close",
+"data": {
+ "Date": [ "12/04/2012", "12/05/2012", "12/06/2012", "12/07/2012", "12/10/2012", "12/11/2012", "12/12/2012", "12/13/2012", "12/14/2012", "12/17/2012", "12/18/2012", "12/19/2012", "12/20/2012", "12/21/2012", "12/24/2012", "12/26/2012", "12/27/2012", "12/28/2012", "12/31/2012", "01/02/2013", "01/03/2013", "01/04/2013", "01/07/2013", "01/08/2013", "01/09/2013", "01/10/2013", "01/11/2013", "01/14/2013", "01/15/2013", "01/16/2013", "01/17/2013", "01/18/2013", "01/22/2013", "01/23/2013", "01/24/2013", "01/25/2013", "01/28/2013", "01/29/2013", "01/30/2013", "01/31/2013", "02/01/2013", "02/04/2013", "02/05/2013", "02/06/2013", "02/07/2013", "02/08/2013", "02/11/2013", "02/12/2013", "02/13/2013", "02/14/2013", "02/15/2013", "02/19/2013", "02/20/2013", "02/21/2013", "02/22/2013", "02/25/2013", "02/26/2013", "02/27/2013", "02/28/2013", "03/01/2013", "03/04/2013", "03/05/2013", "03/06/2013", "03/07/2013", "03/08/2013" ],
+"Index": [ "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA", "DJIA" ],
+"Metric": [ "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price", "price" ],
+"Close": [  12952,  13034,  13074,  13155,  13170,  13248,  13245,  13171,  13135,  13235,  13351,  13252,  13312,  13191,  13139,  13115,  13096,  12938,  13104,  13413,  13391,  13435,  13384,  13329,  13391,  13471,  13488,  13507,  13535,  13511,  13596,  13650,  13712,  13779,  13825,  13896,  13882,  13954,  13910,  13861,  14010,  13880,  13979,  13987,  13944,  13993,  13971,  14019,  13983,  13973,  13982,  14036,  13928,  13881,  14001,  13784,  13900,  14075,  14054,  14090,  14128,  14254,  14296,  14329,  14397 ] 
+},
+"facet": null,
+"type": "line",
+"size": {
+ "const":      3 
+} 
+} 
+],
+"facet": [],
+"guides": {
+ "x": {
+ "numticks":     10 
+},
+"y": {
+ "min":  12000,
+"max":  15000 
+} 
+},
+"coord": [],
+"title": "Dow Jones Daily Closing Value",
+"id": "chart2b4016bb79c1" 
+}
+    _.each(chartParams.layers, function(el){
+        el.data = polyjs.data(el.data)
+    })
+    var graph_chart2b4016bb79c1 = polyjs.chart(chartParams);
+</script>
+    
+  </body>
+  <!-- Google Prettify -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js"></script>
+  <script 
+    src='https://google-code-prettify.googlecode.com/svn-history/r232/trunk/src/lang-r.js'>
+  </script>
+  <script>
+    var pres = document.getElementsByTagName("pre");
+    for (var i=0; i < pres.length; ++i) {
+      pres[i].className = "prettyprint linenums";
+    }
+    prettyPrint();
+  </script>
+</html>
