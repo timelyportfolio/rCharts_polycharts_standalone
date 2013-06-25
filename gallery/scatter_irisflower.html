@@ -66,12 +66,12 @@
                   line_dowjones
                 </a>
               </li>
-              <li class='active'>
+              <li class=''>
                 <a href='scatter_facet_iris.html'>
                   scatter_facet_iris
                 </a>
               </li>
-              <li class=''>
+              <li class='active'>
                 <a href='scatter_irisflower.html'>
                   scatter_irisflower
                 </a>
@@ -90,15 +90,16 @@
           </div>
         </div>
         <div class='span9'>
-          <div id='chart1b84137236d2' class='rChart nvd3Plot polycharts'></div>
+          <div id='chart1b846163587a' class='rChart nvd3Plot polycharts'></div>
           <br/>
 <pre><code class='r'>data(iris)
 colnames(iris) &lt;- sapply(colnames(iris), FUN = gsub, pattern = &quot;\\.&quot;, replacement = &quot;&quot;)
-p18 &lt;- rPlot(width = 720, height = 300, x = &quot;SepalLength&quot;, y = &quot;SepalWidth&quot;, color = &quot;Species&quot;, data = iris, 
-    type = &quot;point&quot;)
-p18$facet(type = &quot;wrap&quot;, var = &quot;Species&quot;)
-p18$set(title = &quot;Iris Flowers&quot;)
-p18 
+p5 &lt;- rPlot(SepalWidth ~ SepalLength, data = iris, color = &quot;Species&quot;, type = &quot;point&quot;, height = 400)
+# again match polychartjs example exactly to show how we can change axis and legend titles
+p5$guides(color = list(title = &quot;Category&quot;), y = list(title = &quot;sepalWidth&quot;), x = list(title = &quot;sepalLength&quot;))
+p5$set(title = &quot;Iris Flowers&quot;)
+p5$html()
+p5 
 </code></pre>
         </div>
       </div>
@@ -106,7 +107,7 @@ p18
       
     <script type='text/javascript'>
     var chartParams = {
- "dom": "chart1b84137236d2",
+ "dom": "chart1b846163587a",
 "width":    800,
 "height":    400,
 "layers": [
@@ -121,25 +122,31 @@ p18
 "Species": [ "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica" ] 
 },
 "facet": null,
-"width":    720,
-"height":    300,
 "color": "Species",
-"type": "point" 
+"type": "point",
+"height":    400 
 } 
 ],
-"facet": {
- "type": "wrap",
-"var": "Species" 
+"facet": [],
+"guides": {
+ "color": {
+ "title": "Category" 
 },
-"guides": [],
+"y": {
+ "title": "sepalWidth" 
+},
+"x": {
+ "title": "sepalLength" 
+} 
+},
 "coord": [],
 "title": "Iris Flowers",
-"id": "chart1b84137236d2" 
+"id": "chart1b846163587a" 
 }
     _.each(chartParams.layers, function(el){
         el.data = polyjs.data(el.data)
     })
-    var graph_chart1b84137236d2 = polyjs.chart(chartParams);
+    var graph_chart1b846163587a = polyjs.chart(chartParams);
 </script>
     
   </body>

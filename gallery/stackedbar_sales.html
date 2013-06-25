@@ -46,7 +46,7 @@
                   boxplot
                 </a>
               </li>
-              <li class='active'>
+              <li class=''>
                 <a href='groupedbar_salaries.html'>
                   groupedbar_salaries
                 </a>
@@ -76,7 +76,7 @@
                   scatter_irisflower
                 </a>
               </li>
-              <li class=''>
+              <li class='active'>
                 <a href='stackedbar_sales.html'>
                   stackedbar_sales
                 </a>
@@ -90,13 +90,19 @@
           </div>
         </div>
         <div class='span9'>
-          <div id='chart1b84234e57ab' class='rChart nvd3Plot polycharts'></div>
+          <div id='chart1b84b176710' class='rChart nvd3Plot polycharts'></div>
           <br/>
-<pre><code class='r'>data = list(names = c(&quot;Joe&quot;, &quot;Jay&quot;, &quot;Jessica&quot;, &quot;Mayfield&quot;, &quot;Candice&quot;, &quot;Alice&quot;), department = c(&quot;Sales&quot;, 
-    &quot;Sales&quot;, &quot;IT&quot;, &quot;IT&quot;, &quot;HR&quot;, &quot;HR&quot;), salary = c(1e+05, 98000, 110000, 50000, 55000, 80000))
-p11 &lt;- rPlot(salary ~ department, color = &quot;names&quot;, data = data, type = &quot;bar&quot;, position = &quot;dodge&quot;)
-p11$set(title = &quot;Department Salaries&quot;)
-p11 
+<pre><code class='r'>data = data.frame(list(segment = c(&quot;FirstTime&quot;, &quot;FirstTime&quot;, &quot;FirstTime&quot;, &quot;Return&quot;, &quot;Return&quot;, &quot;Return&quot;, 
+    &quot;Sale&quot;, &quot;Sale&quot;, &quot;Sale&quot;), source = c(&quot;Referral&quot;, &quot;LinkedIn&quot;, &quot;Cold Call&quot;, &quot;Referral&quot;, &quot;LinkedIn&quot;, &quot;Cold Call&quot;, 
+    &quot;Referral&quot;, &quot;LinkedIn&quot;, &quot;Cold Call&quot;), value = c(10, 15, 20, 5, 10, 18, 3, 5, 8)))
+
+p10 &lt;- rPlot(x = list(var = &quot;segment&quot;, sort = &quot;sum(value)&quot;, desc = &quot;true&quot;), y = &quot;value&quot;, data = data, color = &quot;source&quot;, 
+    type = &quot;bar&quot;, height = 200, width = 720)
+p10$guides(x = list(renderLine = &quot;false&quot;, renderTick = &quot;false&quot;, renderLabel = &quot;true&quot;, renderGrid = &quot;false&quot;), 
+    y = list(position = &quot;none&quot;))
+p10$coord(type = &quot;cartesian&quot;, flip = &quot;true&quot;)
+p10$set(title = &quot;Sales Funnel&quot;)
+p10 
 </code></pre>
         </div>
       </div>
@@ -104,34 +110,52 @@ p11
       
     <script type='text/javascript'>
     var chartParams = {
- "dom": "chart1b84234e57ab",
+ "dom": "chart1b84b176710",
 "width":    800,
 "height":    400,
 "layers": [
  {
- "x": "department",
-"y": "salary",
+ "x": {
+ "var": "segment",
+"sort": "sum(value)",
+"desc": "true" 
+},
+"y": "value",
 "data": {
- "names": [ "Joe", "Jay", "Jessica", "Mayfield", "Candice", "Alice" ],
-"department": [ "Sales", "Sales", "IT", "IT", "HR", "HR" ],
-"salary": [  1e+05,  98000, 1.1e+05,  50000,  55000,  80000 ] 
+ "segment": [ "FirstTime", "FirstTime", "FirstTime", "Return", "Return", "Return", "Sale", "Sale", "Sale" ],
+"source": [ "Referral", "LinkedIn", "Cold Call", "Referral", "LinkedIn", "Cold Call", "Referral", "LinkedIn", "Cold Call" ],
+"value": [     10,     15,     20,      5,     10,     18,      3,      5,      8 ] 
 },
 "facet": null,
-"color": "names",
+"color": "source",
 "type": "bar",
-"position": "dodge" 
+"height":    200,
+"width":    720 
 } 
 ],
 "facet": [],
-"guides": [],
-"coord": [],
-"title": "Department Salaries",
-"id": "chart1b84234e57ab" 
+"guides": {
+ "x": {
+ "renderLine": "false",
+"renderTick": "false",
+"renderLabel": "true",
+"renderGrid": "false" 
+},
+"y": {
+ "position": "none" 
+} 
+},
+"coord": {
+ "type": "cartesian",
+"flip": "true" 
+},
+"title": "Sales Funnel",
+"id": "chart1b84b176710" 
 }
     _.each(chartParams.layers, function(el){
         el.data = polyjs.data(el.data)
     })
-    var graph_chart1b84234e57ab = polyjs.chart(chartParams);
+    var graph_chart1b84b176710 = polyjs.chart(chartParams);
 </script>
     
   </body>

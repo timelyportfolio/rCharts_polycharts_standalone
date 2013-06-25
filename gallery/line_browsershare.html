@@ -90,7 +90,8 @@
           </div>
         </div>
         <div class='span9'>
-          <div id='chart2b4025993de1' class='rChart nvd3Plot polycharts'></div>
+          <div id='chart1b84678956ee' class='rChart nvd3Plot polycharts'></div>
+          <br/>
 <pre><code class='r'>require(reshape2)
 
 browsershare &lt;- read.csv(&quot;http://gs.statcounter.com/chart.php?statType_hidden=browser&amp;region_hidden=ww&amp;granularity=monthly&amp;statType=Browser&amp;region=Worldwide&amp;fromMonthYear=2008-07&amp;toMonthYear=2013-03&amp;csv=1&quot;)
@@ -106,7 +107,7 @@ p3
       
     <script type='text/javascript'>
     var chartParams = {
- "dom": "chart2b4025993de1",
+ "dom": "chart1b84678956ee",
 "width":    800,
 "height":    400,
 "layers": [
@@ -130,12 +131,12 @@ p3
 "guides": [],
 "coord": [],
 "title": "Browser Shares Over Time",
-"id": "chart2b4025993de1" 
+"id": "chart1b84678956ee" 
 }
     _.each(chartParams.layers, function(el){
         el.data = polyjs.data(el.data)
     })
-    var graph_chart2b4025993de1 = polyjs.chart(chartParams);
+    var graph_chart1b84678956ee = polyjs.chart(chartParams);
 </script>
     
   </body>

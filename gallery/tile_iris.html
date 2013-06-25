@@ -66,7 +66,7 @@
                   line_dowjones
                 </a>
               </li>
-              <li class='active'>
+              <li class=''>
                 <a href='scatter_facet_iris.html'>
                   scatter_facet_iris
                 </a>
@@ -81,7 +81,7 @@
                   stackedbar_sales
                 </a>
               </li>
-              <li class=''>
+              <li class='active'>
                 <a href='tile_iris.html'>
                   tile_iris
                 </a>
@@ -90,15 +90,16 @@
           </div>
         </div>
         <div class='span9'>
-          <div id='chart1b84137236d2' class='rChart nvd3Plot polycharts'></div>
+          <div id='chart1b847a8272db' class='rChart nvd3Plot polycharts'></div>
           <br/>
 <pre><code class='r'>data(iris)
 colnames(iris) &lt;- sapply(colnames(iris), FUN = gsub, pattern = &quot;\\.&quot;, replacement = &quot;&quot;)
-p18 &lt;- rPlot(width = 720, height = 300, x = &quot;SepalLength&quot;, y = &quot;SepalWidth&quot;, color = &quot;Species&quot;, data = iris, 
-    type = &quot;point&quot;)
-p18$facet(type = &quot;wrap&quot;, var = &quot;Species&quot;)
-p18$set(title = &quot;Iris Flowers&quot;)
-p18 
+p16 &lt;- rPlot(height = 400, width = 720, x = &quot;bin(SepalLength, 1)&quot;, y = &quot;bin(SepalWidth, 0.5)&quot;, color = &quot;mean(PetalWidth)&quot;, 
+    data = iris, type = &quot;tile&quot;)
+p16$guides(color = list(scale = list(type = &quot;gradient&quot;, lower = &quot;#EEE&quot;, upper = &quot;#a23&quot;)))
+p16$facet(type = &quot;wrap&quot;, var = &quot;Species&quot;)  #,formatter='function(object) { return object.category }')
+p16$set(title = &quot;Iris Flowers&quot;)
+p16 
 </code></pre>
         </div>
       </div>
@@ -106,13 +107,13 @@ p18
       
     <script type='text/javascript'>
     var chartParams = {
- "dom": "chart1b84137236d2",
+ "dom": "chart1b847a8272db",
 "width":    800,
 "height":    400,
 "layers": [
  {
- "x": "SepalLength",
-"y": "SepalWidth",
+ "x": "bin(SepalLength, 1)",
+"y": "bin(SepalWidth, 0.5)",
 "data": {
  "SepalLength": [    5.1,    4.9,    4.7,    4.6,      5,    5.4,    4.6,      5,    4.4,    4.9,    5.4,    4.8,    4.8,    4.3,    5.8,    5.7,    5.4,    5.1,    5.7,    5.1,    5.4,    5.1,    4.6,    5.1,    4.8,      5,      5,    5.2,    5.2,    4.7,    4.8,    5.4,    5.2,    5.5,    4.9,      5,    5.5,    4.9,    4.4,    5.1,      5,    4.5,    4.4,      5,    5.1,    4.8,    5.1,    4.6,    5.3,      5,      7,    6.4,    6.9,    5.5,    6.5,    5.7,    6.3,    4.9,    6.6,    5.2,      5,    5.9,      6,    6.1,    5.6,    6.7,    5.6,    5.8,    6.2,    5.6,    5.9,    6.1,    6.3,    6.1,    6.4,    6.6,    6.8,    6.7,      6,    5.7,    5.5,    5.5,    5.8,      6,    5.4,      6,    6.7,    6.3,    5.6,    5.5,    5.5,    6.1,    5.8,      5,    5.6,    5.7,    5.7,    6.2,    5.1,    5.7,    6.3,    5.8,    7.1,    6.3,    6.5,    7.6,    4.9,    7.3,    6.7,    7.2,    6.5,    6.4,    6.8,    5.7,    5.8,    6.4,    6.5,    7.7,    7.7,      6,    6.9,    5.6,    7.7,    6.3,    6.7,    7.2,    6.2,    6.1,    6.4,    7.2,    7.4,    7.9,    6.4,    6.3,    6.1,    7.7,    6.3,    6.4,      6,    6.9,    6.7,    6.9,    5.8,    6.8,    6.7,    6.7,    6.3,    6.5,    6.2,    5.9 ],
 "SepalWidth": [    3.5,      3,    3.2,    3.1,    3.6,    3.9,    3.4,    3.4,    2.9,    3.1,    3.7,    3.4,      3,      3,      4,    4.4,    3.9,    3.5,    3.8,    3.8,    3.4,    3.7,    3.6,    3.3,    3.4,      3,    3.4,    3.5,    3.4,    3.2,    3.1,    3.4,    4.1,    4.2,    3.1,    3.2,    3.5,    3.6,      3,    3.4,    3.5,    2.3,    3.2,    3.5,    3.8,      3,    3.8,    3.2,    3.7,    3.3,    3.2,    3.2,    3.1,    2.3,    2.8,    2.8,    3.3,    2.4,    2.9,    2.7,      2,      3,    2.2,    2.9,    2.9,    3.1,      3,    2.7,    2.2,    2.5,    3.2,    2.8,    2.5,    2.8,    2.9,      3,    2.8,      3,    2.9,    2.6,    2.4,    2.4,    2.7,    2.7,      3,    3.4,    3.1,    2.3,      3,    2.5,    2.6,      3,    2.6,    2.3,    2.7,      3,    2.9,    2.9,    2.5,    2.8,    3.3,    2.7,      3,    2.9,      3,      3,    2.5,    2.9,    2.5,    3.6,    3.2,    2.7,      3,    2.5,    2.8,    3.2,      3,    3.8,    2.6,    2.2,    3.2,    2.8,    2.8,    2.7,    3.3,    3.2,    2.8,      3,    2.8,      3,    2.8,    3.8,    2.8,    2.8,    2.6,      3,    3.4,    3.1,      3,    3.1,    3.1,    3.1,    2.7,    3.2,    3.3,      3,    2.5,      3,    3.4,      3 ],
@@ -121,25 +122,33 @@ p18
 "Species": [ "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "setosa", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "versicolor", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica", "virginica" ] 
 },
 "facet": null,
+"height":    400,
 "width":    720,
-"height":    300,
-"color": "Species",
-"type": "point" 
+"color": "mean(PetalWidth)",
+"type": "tile" 
 } 
 ],
 "facet": {
  "type": "wrap",
 "var": "Species" 
 },
-"guides": [],
+"guides": {
+ "color": {
+ "scale": {
+ "type": "gradient",
+"lower": "#EEE",
+"upper": "#a23" 
+} 
+} 
+},
 "coord": [],
 "title": "Iris Flowers",
-"id": "chart1b84137236d2" 
+"id": "chart1b847a8272db" 
 }
     _.each(chartParams.layers, function(el){
         el.data = polyjs.data(el.data)
     })
-    var graph_chart1b84137236d2 = polyjs.chart(chartParams);
+    var graph_chart1b847a8272db = polyjs.chart(chartParams);
 </script>
     
   </body>
